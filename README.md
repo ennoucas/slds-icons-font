@@ -1,4 +1,4 @@
-# SLDS ICONS CSS
+# SLDS ICONS FONT
 
 This pack was created with [IconMoon App](https://icomoon.io/app/#/select) with [Salesforce Lightning Design System](https://www.lightningdesignsystem.com) 
 
