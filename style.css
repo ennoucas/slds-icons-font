@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'sldsicon';
-  src:  url('fonts/sldsicon.eot?g3csc');
-  src:  url('fonts/sldsicon.eot?g3csc#iefix') format('embedded-opentype'),
-    url('fonts/sldsicon.ttf?g3csc') format('truetype'),
-    url('fonts/sldsicon.woff?g3csc') format('woff'),
-    url('fonts/sldsicon.svg?g3csc#sldsicon') format('svg');
+  src:  url('fonts/sldsicon.eot?gfarpb');
+  src:  url('fonts/sldsicon.eot?gfarpb#iefix') format('embedded-opentype'),
+    url('fonts/sldsicon.ttf?gfarpb') format('truetype'),
+    url('fonts/sldsicon.woff?gfarpb') format('woff'),
+    url('fonts/sldsicon.svg?gfarpb#sldsicon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -2353,7 +2353,6 @@
 }
 .slds-icon-custom17:before {
   content: "\ec5a";
-  color: #fff;
 }
 .slds-icon-custom18:before {
   content: "\ec5b";
@@ -2402,7 +2401,6 @@
 }
 .slds-icon-custom33:before {
   content: "\ec6a";
-  color: #fff;
 }
 .slds-icon-custom34:before {
   content: "\ec6b";
