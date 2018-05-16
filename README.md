@@ -1,6 +1,6 @@
-# SLDS ICONS CSS
+# SLDS ICONS FONT
 
-This pack was created with [IconMoon App](https://icomoon.io/app/#/select) with [Salesforce Lightning Design System](https://www.lightningdesignsystem.com) 
+This pack was created with [IcoMoon App](https://icomoon.io/app/#/select) with [Salesforce Lightning Design System](https://www.lightningdesignsystem.com) 
 
 You just have to import `style.css` and then add prefix icon names with `slds-icon-`
 
