@@ -1,0 +1,76 @@
+name: build
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Create idoc config.
+      run: |
+        cat > idoc.yml << EOF
+        site: "Colors CLI {{version}}"
+        menus:
+          Sponsor: https://jaywcjlove.github.io/#/sponsor
+        EOF
+
+    - run: npm install idoc@1.27.2 -g
+    - run: idoc
+    - run: cp -rp img dist
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+
+    - run: npm run test
+
+    - run: npm publish
+      name: colors-cli
+      continue-on-error: true
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - name: Is a tag created auto?
+      id: create_tag
+      uses: jaywcjlove/create-tag-action@main
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        package-path: ./package.json
+
+    - name: Generate Changelog
+      id: changelog
+      uses: jaywcjlove/changelog-generator@main
+      if: steps.create_tag.outputs.successful
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        head-ref: ${{ steps.create_tag.outputs.version }}
+        filter-author: (小弟调调™|Renovate Bot)
+        filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
+
+    - name: Create Release
+      uses: ncipollo/release-action@v1
+      if: steps.create_tag.outputs.successful
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        name: ${{ steps.create_tag.outputs.version }}
+        tag: ${{ steps.create_tag.outputs.version }}
+        body: |
+          [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/colors-cli@${{steps.create_tag.outputs.versionNumber}}/file/README.md)
+          
+          ```bash
+          npm i colors-cli@${{steps.create_tag.outputs.versionNumber}}
+          ```
+
+          ${{ steps.changelog.outputs.compareurl }}
+          
+          ${{ steps.changelog.outputs.changelog }}

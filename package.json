@@ -1,0 +1,64 @@
+{
+  "name": "slds-icons-font",
+  "version": "1.0.0",
+  "description": "This pack was created with [IcoMoon App](https://icomoon.io/app/#/select) with [Salesforce Lightning Design System](https://www.lightningdesignsystem.com)",
+  "main": "index.js",
+  "scripts": {
+    "font": "mkdir tmp && cp ./icons/**/*.svg ./tmp && svgtofont --sources ./tmp --output ./dist/fonts && rm -rf tmp"
+  },
+  "author": "Lucas Ennouchi",
+  "license": "ISC",
+  "dependencies": {
+    "svgtofont": "^4.1.2"
+  },
+  "svgtofont": {
+    "fontName": "slds-icons",
+    "classPrefix": "slds-icon-",
+    "baseSelector": ".icon",
+    "types": [
+      "woff2",
+      "woff",
+      "ttf",
+      "eot",
+      "svg"
+    ],
+    "css": true,
+    "cssDest": "dist/css/slds-icons.css",
+    "outSVGReact": false,
+    "website": {
+      "title": "slds icons font",
+      "logo": "awef",
+      "version": "awef",
+      "meta": {
+        "description": "Converts SVG fonts to TTF/EOT/WOFF/WOFF2/SVG format.",
+        "keywords": "svgtofont,TTF,EOT,WOFF,WOFF2,SVG"
+      },
+      "description": "",
+      "corners": {
+        "url": "https://github.com/jaywcjlove/svgtofont",
+        "width": 62,
+        "height": 62,
+        "bgColor": "#dc3545"
+      },
+      "links": [
+        {
+          "title": "GitHub",
+          "url": "https://github.com/jaywcjlove/svgtofont"
+        },
+        {
+          "title": "Feedback",
+          "url": "https://github.com/jaywcjlove/svgtofont/issues"
+        },
+        {
+          "title": "Font Class",
+          "url": "index.html"
+        },
+        {
+          "title": "Unicode",
+          "url": "unicode.html"
+        }
+      ],
+      "footerInfo": "Licensed under MIT. (Yes it's free and"
+    }
+  }
+}
