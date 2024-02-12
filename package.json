@@ -4,9 +4,10 @@
   "description": "This pack was created with [IcoMoon App](https://icomoon.io/app/#/select) with [Salesforce Lightning Design System](https://www.lightningdesignsystem.com)",
   "main": "index.js",
   "scripts": {
-    "crop": "node svgCrop.js",
+    "scale": "node svgScale.js",
     "font": "svgtofont --sources ./tmp --output ./dist/fonts",
-    "cropandfont": "mkdir tmp && cp ./icons/**/*.svg ./tmp && npm run crop && npm run font && rm -rf tmp"
+    "scaleandfont": "mkdir tmp && cp ./icons/**/*.svg ./tmp && npm run scale && npm run font && rm -rf tmp",
+    "noscaleandfont": "mkdir tmp && cp ./icons/**/*.svg ./tmp && npm run font && rm -rf tmp"
   },
   "author": "Lucas Ennouchi",
   "license": "ISC",
@@ -37,14 +38,14 @@
     "website": {
       "title": "slds icons font",
       "logo": "awef",
-      "version": "awef",
+      "version": "1.0.0",
       "meta": {
         "description": "Converts SVG fonts to TTF/EOT/WOFF/WOFF2/SVG format.",
         "keywords": "svgtofont,TTF,EOT,WOFF,WOFF2,SVG"
       },
       "description": "",
       "corners": {
-        "url": "https://github.com/jaywcjlove/svgtofont",
+        "url": "https://github.com/ennoucas/slds-icons-font",
         "width": 62,
         "height": 62,
         "bgColor": "#dc3545"
@@ -52,11 +53,11 @@
       "links": [
         {
           "title": "GitHub",
-          "url": "https://github.com/jaywcjlove/svgtofont"
+          "url": "https://github.com/ennoucas/slds-icons-font"
         },
         {
           "title": "Feedback",
-          "url": "https://github.com/jaywcjlove/svgtofont/issues"
+          "url": "https://github.com/ennoucas/slds-icons-font/issues"
         },
         {
           "title": "Font Class",
