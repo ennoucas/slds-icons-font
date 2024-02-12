@@ -4,17 +4,20 @@
   "description": "This pack was created with [IcoMoon App](https://icomoon.io/app/#/select) with [Salesforce Lightning Design System](https://www.lightningdesignsystem.com)",
   "main": "index.js",
   "scripts": {
-    "font": "mkdir tmp && cp ./icons/**/*.svg ./tmp && svgtofont --sources ./tmp --output ./dist/fonts && rm -rf tmp"
+    "crop": "node svgCrop.js",
+    "font": "svgtofont --sources ./tmp --output ./dist/fonts",
+    "cropandfont": "mkdir tmp && cp ./icons/**/*.svg ./tmp && npm run crop && npm run font && rm -rf tmp"
   },
   "author": "Lucas Ennouchi",
   "license": "ISC",
   "dependencies": {
+    "fs-extra": "^11.2.0",
+    "svg-path-bbox": "^1.2.4",
     "svgtofont": "^4.1.2"
   },
   "svgtofont": {
     "fontName": "slds-icons",
     "classPrefix": "slds-icon-",
-    "baseSelector": ".icon",
     "types": [
       "woff2",
       "woff",
@@ -22,6 +25,10 @@
       "eot",
       "svg"
     ],
+    "svgicons2svgfont": {
+      "fontHeight": 1000,
+      "normalize": true
+    },
     "css": true,
     "cssDest": "dist/css/slds-icons.css",
     "outSVGReact": false,
