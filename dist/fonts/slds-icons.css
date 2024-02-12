@@ -1,11 +1,11 @@
 @font-face {
   font-family: "slds-icons";
-  src: url('slds-icons.eot?t=1707730135917'); /* IE9*/
-  src: url('slds-icons.eot?t=1707730135917#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url("slds-icons.woff2?t=1707730135917") format("woff2"),
-  url("slds-icons.woff?t=1707730135917") format("woff"),
-  url('slds-icons.ttf?t=1707730135917') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('slds-icons.svg?t=1707730135917#slds-icons') format('svg'); /* iOS 4.1- */
+  src: url('slds-icons.eot?t=1707740437574'); /* IE9*/
+  src: url('slds-icons.eot?t=1707740437574#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url("slds-icons.woff2?t=1707740437574") format("woff2"),
+  url("slds-icons.woff?t=1707740437574") format("woff"),
+  url('slds-icons.ttf?t=1707740437574') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('slds-icons.svg?t=1707740437574#slds-icons') format('svg'); /* iOS 4.1- */
 }
 
 [class^="slds-icons-"], [class*=" slds-icons-"] {

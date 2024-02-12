@@ -1,6 +1,7 @@
-const fs = require('fs-extra');
-const path = require('path');
-const svgPathBbox = require('svg-path-bbox');
+import fs from 'fs-extra';
+import path from 'path';
+import { createSVGWindow } from 'svgdom'
+import { SVG, registerWindow } from '@svgdotjs/svg.js'
 
 const inputDir = 'tmp'; // Update this path
 const outputDir = 'tmp'; // Update this path
@@ -51,28 +52,22 @@ fs.readdir(inputDir, (err, files) => {
 
 
 function updateViewBox(svgData) {
-    const pathRegex = /<path[^>]+d="([^"]+)"/g;
-    let match;
-    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-
-    // Calculate bounding box for all paths
-    while ((match = pathRegex.exec(svgData)) !== null) {
-        const [x0, y0, x1, y1] = svgPathBbox(match[1]);
-        if (x0 < minX) minX = x0;
-        if (x1 > maxX) maxX = x1;
-        if (y0 < minY) minY = y0;
-        if (y1 > maxY) maxY = y1;
-    }
-
-    if (minX === Infinity) {
-        console.error('No paths found in SVG.');
-        return svgData; // Return original data if no paths found
-    }
-
-    const height = maxY - minY
-    const width = maxX - minX
+    const window = createSVGWindow()
+    const document = window.document
+    registerWindow(window, document)
+    const canvas = SVG(document.documentElement)
+    canvas.svg(svgData)
+    let svg = document.querySelector('svg');
+    const { xMin, xMax, yMin, yMax } = [...svg.children].reduce((acc, el) => {
+        const { x, y, width, height } = el.getBBox();
+        if (!acc.xMin || x < acc.xMin) acc.xMin = x;
+        if (!acc.xMax || x + width > acc.xMax) acc.xMax = x + width;
+        if (!acc.yMin || y < acc.yMin) acc.yMin = y;
+        if (!acc.yMax || y + height > acc.yMax) acc.yMax = y + height;
+        return acc;
+      }, {});
     // Correctly calculate new viewBox that fits all content
-    const newViewBox = `viewBox="${minX} ${minY} ${width} ${height}" preserveAspectRatio="xMidYMid meet"`;
+    const newViewBox = `viewBox="${xMin} ${yMin} ${xMax - xMin} ${yMax - yMin}"`;
 
     // console.log("newViewBox", newViewBox)
 
@@ -81,7 +76,7 @@ function updateViewBox(svgData) {
     if (svgTagRegex.test(svgData)) {
         // If <svg> tag exists, replace or add viewBox
         return svgData.replace(svgTagRegex, match => {
-            return match.replace(/width="[^"]*"/, `width="${width}"`).replace(/height="[^"]*"/, `height="${height}"`).replace(/viewBox="[^"]*"/, newViewBox)
+            return match.replace(/width="[^"]*"/, `width="${xMax - xMin}"`).replace(/height="[^"]*"/, `height="${yMax - yMin}"`).replace(/viewBox="[^"]*"/, newViewBox)
         });
     } else {
         // If no <svg> tag found (unlikely), return original data
