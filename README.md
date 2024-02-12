@@ -1,8 +1,9 @@
 # SLDS ICONS FONT
+Font for slds icons. 
 
-This pack was created with [IcoMoon App](https://icomoon.io/app/#/select) with [Salesforce Lightning Design System](https://www.lightningdesignsystem.com) 
+Built with svgtofont. 
 
-You just have to import `style.css` and then add prefix icon names with `slds-icon-`
+2 sets of fonts are available: scaled (all same size) and not scaled.
 
 Icon names are referenced [here](https://www.lightningdesignsystem.com/icons/).
 
@@ -14,5 +15,3 @@ Icon names are referenced [here](https://www.lightningdesignsystem.com/icons/).
 <i class="slds-icon-account" style="color:#2ecc71"/>
 
 ```
-
-For better consistency, all icons have been scaled to the same size and color has been removed. 

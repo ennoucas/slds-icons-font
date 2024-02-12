@@ -1,0 +1,74 @@
+{
+  "name": "slds-icons-font",
+  "version": "1.0.0",
+  "description": "This pack was created with [IcoMoon App](https://icomoon.io/app/#/select) with [Salesforce Lightning Design System](https://www.lightningdesignsystem.com)",
+  "main": "index.js",
+  "scripts": {
+    "scale": "node svgScale.js",
+    "font": "svgtofont --sources ./tmp --output ./dist/fonts",
+    "scaleandfont": "mkdir tmp && cp ./icons/**/*.svg ./tmp && npm run scale && npm run font && rm -rf tmp",
+    "noscaleandfont": "mkdir tmp && cp ./icons/**/*.svg ./tmp && npm run font && rm -rf tmp"
+  },
+  "author": "Lucas Ennouchi",
+  "license": "ISC",
+  "dependencies": {
+    "@svgdotjs/svg.js": "^3.2.0",
+    "fs-extra": "^11.2.0",
+    "svgdom": "^0.1.19",
+    "svgtofont": "^4.1.2"
+  },
+  "svgtofont": {
+    "fontName": "slds-icons",
+    "classPrefix": "slds-icon-",
+    "types": [
+      "woff2",
+      "woff",
+      "ttf",
+      "eot",
+      "svg"
+    ],
+    "svgicons2svgfont": {
+      "fontHeight": 1000,
+      "normalize": true
+    },
+    "css": true,
+    "cssDest": "dist/css/slds-icons.css",
+    "outSVGReact": false,
+    "website": {
+      "title": "slds icons font",
+      "logo": "awef",
+      "version": "1.0.0",
+      "meta": {
+        "description": "Converts SVG fonts to TTF/EOT/WOFF/WOFF2/SVG format.",
+        "keywords": "svgtofont,TTF,EOT,WOFF,WOFF2,SVG"
+      },
+      "description": "",
+      "corners": {
+        "url": "https://github.com/ennoucas/slds-icons-font",
+        "width": 62,
+        "height": 62,
+        "bgColor": "#dc3545"
+      },
+      "links": [
+        {
+          "title": "GitHub",
+          "url": "https://github.com/ennoucas/slds-icons-font"
+        },
+        {
+          "title": "Feedback",
+          "url": "https://github.com/ennoucas/slds-icons-font/issues"
+        },
+        {
+          "title": "Font Class",
+          "url": "index.html"
+        },
+        {
+          "title": "Unicode",
+          "url": "unicode.html"
+        }
+      ],
+      "footerInfo": "Licensed under MIT. (Yes it's free and"
+    }
+  },
+  "type": "module"
+}
